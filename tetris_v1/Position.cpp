@@ -1,22 +1,22 @@
 #include <curses.h>
 #include <chrono>
 #include <thread>
-#include "PeÁaT.h"
-#include "PeÁaO.h"
+#include "Pe√ßaT.h"
+#include "Pe√ßaO.h"
 #include <windows.h>
 
-// Dimensıes padr„o do tabuleiro de Tetris
+// Dimens√µes padr√£o do tabuleiro de Tetris
 const int LARGURA_TAB = 10;
 const int ALTURA_TAB = 20;
 
-// FunÁ„o de desenho (Camada UI) separada da lÛgica
+// Fun√ß√£o de desenho (Camada UI) separada da l√≥gica
 static void desenharJogo(const Peca& pecaAtiva) {
     erase();
 
     int max_y, max_x;
     getmaxyx(stdscr, max_y, max_x);
 
-    // Centrar a ·rea de jogo no ecr„ (cada cÈlula tem 2 colunas de largura)
+    // Centrar a √°rea de jogo no ecr√£ (cada c√©lula tem 2 colunas de largura)
     int origem_x = (max_x - (LARGURA_TAB * 2)) / 2;
     int origem_y = (max_y - ALTURA_TAB) / 2;
 
@@ -31,7 +31,7 @@ static void desenharJogo(const Peca& pecaAtiva) {
     }
     attroff(COLOR_PAIR(3));
 
-    // Desenhar todos os blocos absolutos da peÁa ativa
+    // Desenhar todos os blocos absolutos da pe√ßa ativa
     attron(COLOR_PAIR(pecaAtiva.getCor()));
     std::vector<Posicao> blocos = pecaAtiva.obterBlocosAbsolutos();
     for (size_t i = 0; i < blocos.size(); ++i) {
@@ -53,22 +53,22 @@ int main() {
     cbreak();
     noecho();
     keypad(stdscr, TRUE);
-    nodelay(stdscr, TRUE); // getch() n„o-bloqueante
+    nodelay(stdscr, TRUE); // getch() n√£o-bloqueante
     curs_set(0);
 
     if (has_colors()) {
         start_color();
-        init_pair(1, COLOR_MAGENTA, COLOR_MAGENTA); // PeÁa T
-        init_pair(2, COLOR_YELLOW, COLOR_YELLOW);   // PeÁa O
+        init_pair(1, COLOR_MAGENTA, COLOR_MAGENTA); // Pe√ßa T
+        init_pair(2, COLOR_YELLOW, COLOR_YELLOW);   // Pe√ßa O
         init_pair(3, COLOR_WHITE, COLOR_BLACK);     // Moldura
     }
 
-    // Criar uma peÁa T derivada
+    // Criar uma pe√ßa T derivada
     PecaO peca(Posicao(4, 0));
 
-    // TemporizaÁ„o conforme gui„o: frequÍncia base e subm˙ltiplo para a gravidade
+    // Temporiza√ß√£o conforme gui√£o: frequ√™ncia base e subm√∫ltiplo para a gravidade
     const int FPS = 60;
-    const int FRAMES_PARA_DESCER = 30; // Desce a cada 30 iteraÁıes (0.5s)
+    const int FRAMES_PARA_DESCER = 30; // Desce a cada 30 itera√ß√µes (0.5s)
     int contadorFrames = 0;
     bool a_correr = true;
 
@@ -105,10 +105,10 @@ int main() {
             contadorFrames = 0;
         }
 
-        // RenderizaÁ„o
+        // Renderiza√ß√£o
         desenharJogo(peca);
 
-        // CadÍncia de 60 frames por segundo
+        // Cad√™ncia de 60 frames por segundo
         std::this_thread::sleep_for(std::chrono::milliseconds(1000 / FPS));
     }
 
