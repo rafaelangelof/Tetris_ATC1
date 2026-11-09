@@ -9,11 +9,11 @@ private:
 public:
     Posicao(int x = 0, int y = 0) : x(x), y(y) {}
 
-    Posicao getPosition() const { return *this; } //Posiçao das peças 
+    Posicao getPosition() const { return *this; } //PosiÃ§ao das peÃ§as 
     int getX() const { return x; }
     int getY() const { return y; }
 
-    Posicao somar(const Posicao& delta) const { //Variação da posição
+    Posicao somar(const Posicao& delta) const { //VariaÃ§Ã£o da posiÃ§Ã£o
         return Posicao(x + delta.x, y + delta.y);
     }
 };
