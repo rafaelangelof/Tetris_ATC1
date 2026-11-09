@@ -1,7 +1,7 @@
 #ifndef PECA_O_H
 #define PECA_O_H
 
-#include "Peça.h"
+#include "PeÃ§a.h"
 
 class PecaO : public Peca {
 public:
