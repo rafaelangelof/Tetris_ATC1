@@ -7,14 +7,14 @@
 class Peca {
 private:
     Posicao origem;
-    std::vector<Posicao> offsets; // Posição relativa 
-    int cor;                      // Cores das peças
+    std::vector<Posicao> offsets; // PosiÃ§Ã£o relativa 
+    int cor;                      // Cores das peÃ§as
 public:
     Peca(const Posicao& posInicial, const std::vector<Posicao>& blocosOffsets, int corPeca)
         : origem(posInicial), offsets(blocosOffsets), cor(corPeca) {
     }
 
-    // Devolve a lista com as posições reais no tabuleiro
+    // Devolve a lista com as posiÃ§Ãµes reais no tabuleiro
     std::vector<Posicao> obterBlocosAbsolutos() const {
         std::vector<Posicao> absolutos;
         for (size_t i = 0; i < offsets.size(); ++i) {
